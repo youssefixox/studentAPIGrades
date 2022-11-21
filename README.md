@@ -76,4 +76,8 @@ $ npm start
  
  ## Application Demonstration :
  
+ ![alt text](https://raw.githubusercontent.com/youssefixox/studentAPIGrades/main/images/etudiant%20admis.png)
  
+ ![alt text](https://raw.githubusercontent.com/youssefixox/studentAPIGrades/main/images/etudiant%20nexiste%20pas.png)
+ 
+ ![alt text](https://raw.githubusercontent.com/youssefixox/studentAPIGrades/main/images/etudiant%20non%20admis.png)
