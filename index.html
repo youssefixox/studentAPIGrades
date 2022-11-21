@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>institu</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  <script>
+  function result(){
+	var cin= document.getElementsByTagName('input')[0].value;
+	var url = "/api/user/cin/"+cin;
+	var xhr= new XMLHttpRequest();
+	xhr.onreadystatechange=function(){
+		if(xhr.readyState == 4 && xhr.status == 200){
+			obj= JSON.parse(xhr.response);
+			if(obj.data){
+				document.getElementById('cin').innerHTML=obj.data.cin;
+				document.getElementById('math').innerHTML=obj.data.math;
+				document.getElementById('physique').innerHTML=obj.data.physique;
+				document.getElementById('arab').innerHTML=obj.data.arab;
+				document.getElementById('anglais').innerHTML=obj.data.anglais;
+
+
+				if(obj.data.math>=12 && obj.data.physique>=12 && obj.data.arab>=12 && obj.data.physique>=12){
+					document.getElementById('admis').innerHTML="Admis";
+				}else{
+					document.getElementById('admis').innerHTML="Non admis";
+				}
+			}else{
+				alert("User Doesn't exist ! ")
+			}
+		}
+	}
+	xhr.open("GET",url,true);
+	xhr.send();
+	
+	
+   	
+  }
+  </script>
+</head>
+<body>
+  
+<div class="container">
+  <center><h1>application web d’un institut</h1></center>
+  <p>Saisir votre numero cin : </p> 
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Search" name="search">
+      <div class="input-group-btn">
+        <button class="btn btn-default" type="submit" onclick="result()"><i class="glyphicon glyphicon-search"></i></button>
+      </div>
+    </div>
+	<br><br>
+	<table class="table table-sm">
+  <thead>
+    <tr>
+      <th scope="col">CIN</th>
+      <th scope="col">Math</th>
+      <th scope="col">Physique</th>
+      <th scope="col">Arab</th>
+       <th scope="col">Anglais</th>
+	<th scope="col">Admis</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td id="cin"></td>
+      <td id="math"></td>
+      <td id="physique"></td>
+      <td id="arab"></td>
+      <td id="anglais"></td>
+      <td id="admis"></td>
+	
+	
+    </tr>
+</table>
+
+</div>
+<center>
+	
+</center>
+
+</body>
+</html>
